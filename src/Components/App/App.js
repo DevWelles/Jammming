@@ -13,15 +13,15 @@ class App extends React.Component {
 
     this.state = {
       searchResults: [
-        {name:'firstSong', artist: 'Amoprhis', album:'Under the red cloud', id:1},
-        {name:'secondtSong', artist: 'Amarthi', album:'Asator', id:2},
-        {name:'thirdSong', artist: 'Blekija', album:'Ludilo', id:3},
+        // {name:'firstSong', artist: 'Amoprhis', album:'Under the red cloud', id:1},
+        // {name:'secondtSong', artist: 'Amarthi', album:'Asator', id:2},
+        // {name:'thirdSong', artist: 'Blekija', album:'Ludilo', id:3},
       ],
-      playlistName:"Epic Metal",
+      playlistName:"",
       playlistTracks:[
-        {name:'firstSong', artist: 'Ensikerum', album:'From Afar', id:4},
-        {name:'secondtSong', artist: 'Metallica', album:'Master of Puppets', id:5},
-        {name:'thirdSong', artist: 'Powerija', album:'Zmajevi', id:6},
+        // {name:'firstSong', artist: 'Ensikerum', album:'From Afar', id:4},
+        // {name:'secondtSong', artist: 'Metallica', album:'Master of Puppets', id:5},
+        // {name:'thirdSong', artist: 'Powerija', album:'Zmajevi', id:6},
       ]
     };
     this.addTrack = this.addTrack.bind(this);
@@ -31,30 +31,28 @@ class App extends React.Component {
     this.search = this.search.bind(this);
   }
 
-  // async search(searchTerm) {
-  //   let searchResults = await Spotify.search(searchTerm);
-  //   this.setState({searchResults: searchResults})
-  // }
-
-  search(term) {
-    Spotify.search(term).then(searchResults => { //updateamo this.state.searchresult sa valeuom iz Spotify file i njegove metode
-      console.log(searchResults)
-      this.setState({searchResults: searchResults}) //Spotify.search koja resolva sa promisom. Term dobivamo iz endpoita od urla kojeg smo fetchali( pogledaj u spotify fileu)
-    })
+   async search(searchTerm) {
+    let searchResults = await Spotify.search(searchTerm);
+    console.log(searchResults)
+    this.setState({searchResults: searchResults})
   }
 
+  // sa promisom umisto async await:
   // search(term) {
-  //   console.log(term)
+  //   Spotify.search(term).then(searchResults => { //updateamo this.state.searchresult sa valeuom iz Spotify file i njegove metode
+  //     console.log(searchResults)
+  //     this.setState({searchResults: searchResults}) //Spotify.search koja resolva sa promisom. Term dobivamo iz endpoita od urla kojeg smo fetchali( pogledaj u spotify fileu)
+  //   })
   // }
 
-  savePlaylist() {
+  async savePlaylist() {
     const trackUris = this.state.playlistTracks.map(track => track.uri);
-    Spotify.savePlaylist(this.state.playlistName, trackUris).then(() => {
-      this.setState( {
-        playlistName: 'New Playlist',
-        playlistTracks: []
-      })
+    await Spotify.savePlaylist(this.state.playlistName, trackUris);
+    this.setState( {
+      playlistName: 'New Playlist',
+      playlistTracks: []
     })
+
   }
 
   updatePlaylistName(name) {
@@ -83,7 +81,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <h1>Ja<span className="highlight">mmm</span>ing</h1>
+        <h1>Heavy <span className="highlight">Metal</span> and more</h1>
         <div className="App">
           <SearchBar onSearch={this.search} />
         <div className="App-playlist">
