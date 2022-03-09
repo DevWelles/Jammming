@@ -4,7 +4,7 @@
 - Javascript
 - React
 - HTML, CSS
-- [Spotify]https://developer.spotify.com/documentation/web-api/) API 
+- [Spotify](https://developer.spotify.com/documentation/web-api/) API 
 
 ## Introduction
 This is still a work in progress. Below are listed features that are currently implemented and a list of new features that I am currently working on.
