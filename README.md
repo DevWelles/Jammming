@@ -9,7 +9,7 @@
 ## Introduction
 This is still a work in progress. Below are listed features that are currently implemented and a list of new features that I am currently working on.
 The main functionality of this app is to allow users to search the Spotify library, create a custom playlist, then save it to their Spotify account.
-In addition users will be ablee to select and update their existing playlists.
+In addition users will be able to select and update their existing playlists.
 
 
 ## Features that are already implemented
@@ -28,10 +28,10 @@ In addition users will be ablee to select and update their existing playlists.
 
 - Save Playlist to Account — users can save their custom playlist by clicking a button called SAVE TO SPOTIFY.
 
-## Fetures that I am working on
+## Features that I am currently working on
 
 - Display all of users playlist
-- Select avaliable playlist and update it with new songs from search results or delete entire playlist.
+- Select available playlist and update it with new songs from search results or delete entire playlist.
 - Only display songs not currently present in the playlist in the search results
 
 ## Run it locally
